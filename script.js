@@ -1,3 +1,27 @@
+// Dark Mode Toggle
+const themeToggle = document.getElementById('themeToggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+    htmlElement.classList.add('dark-mode');
+    themeToggle.classList.add('active');
+}
+
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+    if (htmlElement.classList.contains('dark-mode')) {
+        htmlElement.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        themeToggle.classList.remove('active');
+    } else {
+        htmlElement.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.classList.add('active');
+    }
+});
+
 // Hero Section Interactivity
 const headshot = document.querySelector('.headshot');
 

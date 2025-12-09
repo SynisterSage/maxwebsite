@@ -10,6 +10,17 @@
     --transition: all 0.3s ease;
 }
 
+/* Dark mode colors - WCAG AAA compliant */
+html.dark-mode {
+    --primary-blue: #e8f1ff;
+    --light-blue: #5ec7ff;
+    --accent-blue: #5ec7ff;
+    --white: #0f0f0f;
+    --light-gray: #1a1a1a;
+    --dark-gray: #e8e8e8;
+    --border-color: #333333;
+}
+
 /* Global Styles */
 * {
     margin: 0;
@@ -26,6 +37,7 @@ body {
     line-height: 1.6;
     color: var(--dark-gray);
     background-color: var(--white);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Navigation */
@@ -476,9 +488,65 @@ body {
 .footer {
     background-color: var(--primary-blue);
     color: var(--white);
-    text-align: center;
     padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-content p {
+    margin: 0;
     font-size: 0.9rem;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--white);
+}
+
+.theme-toggle span {
+    font-size: 0.95rem;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.toggle-switch.active {
+    background-color: var(--accent-blue);
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s ease;
+}
+
+.toggle-switch.active::after {
+    left: 28px;
 }
 
 /* Responsive Design */
